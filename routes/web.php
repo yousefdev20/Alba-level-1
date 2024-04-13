@@ -16,8 +16,8 @@ return [
 
     // Admin Area.
     ['url' => '/mysite/admin', 'name' => 'admin.index', 'action' => [AdminController::class, 'index'], 'method' => 'get', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
-    ['url' => '/mysite/admin/project/store', 'name' => 'admin.store', 'action' => [AdminController::class, 'store'], 'method' => 'post', 'middleware' => [IsAuthenticated::class]],
-    ['url' => '/mysite/admin/project/edit', 'name' => 'admin.edit', 'action' => [AdminController::class, 'edit'], 'method' => 'get', 'middleware' => [IsAuthenticated::class]],
-    ['url' => '/mysite/admin/project/update', 'name' => 'admin.update', 'action' => [AdminController::class, 'update'], 'method' => 'post', 'middleware' => [IsAuthenticated::class]],
-    ['url' => '/mysite/admin/project/delete', 'name' => 'admin.delete', 'action' => [AdminController::class, 'destroy'], 'method' => 'get', 'middleware' => [IsAuthenticated::class]],
+    ['url' => '/mysite/admin/project/store', 'name' => 'admin.store', 'action' => [AdminController::class, 'store'], 'method' => 'post', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
+    ['url' => '/mysite/admin/project/edit', 'name' => 'admin.edit', 'action' => [AdminController::class, 'edit'], 'method' => 'get', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
+    ['url' => '/mysite/admin/project/update', 'name' => 'admin.update', 'action' => [AdminController::class, 'update'], 'method' => 'post', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
+    ['url' => '/mysite/admin/project/delete', 'name' => 'admin.delete', 'action' => [AdminController::class, 'destroy'], 'method' => 'get', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
 ];
