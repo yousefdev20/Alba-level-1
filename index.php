@@ -12,10 +12,11 @@ foreach ($routes as $route) {
             $instance = new $route['action'][0]();
 
             if ($route['middleware'] ?? false) {
-                $middlewareInstance = new $route['middleware']();
-                if($middlewareInstance->handel()) {
-                    $instance->{$route['action'][1]}(new Request());
+                foreach ($route['middleware'] as $middleware) {
+                    $middlewareInstance = new $middleware();
+                    $middlewareInstance->handel();
                 }
+                $instance->{$route['action'][1]}(new Request());
             } else {
                 $instance->{$route['action'][1]}(new Request());
             }

@@ -13,6 +13,7 @@ include_once __DIR__ . '/../../../system/Core/Session/Session.php';
 include_once __DIR__ . '/../../../system/Core/Middlewares/Middleware.php';
 
 include_once __DIR__ . '/../../../app/Http/Middlewares/Auth/IsAuthenticated.php';
+include_once __DIR__ . '/../../../app/Http/Middlewares/HasValidSession.php';
 
 class BaseController
 {

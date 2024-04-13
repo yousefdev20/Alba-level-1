@@ -10,6 +10,7 @@ class Auth
 
         if ($user && $isVerifiedPassword) {
             Session::instance()->set('user', json_encode($user));
+            Session::instance()->set('session_created_at', time());
 
             return true;
         }
