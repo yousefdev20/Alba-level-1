@@ -79,6 +79,14 @@
     <ul class="nav-links">
         <div class="menu">
             <li>
+                <a href="<?php echo route('admin.service.index');?>">Service</a>
+            </li>
+
+            <li>
+                <a href="<?php echo route('admin.index');?>">Project</a>
+            </li>
+
+            <li>
                 <a href="<?php echo route('auth.logout');?>">Logout</a>
             </li>
         </div>

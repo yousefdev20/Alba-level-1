@@ -2,6 +2,7 @@
 
 include_once __DIR__ . '/../app/Http/Controllers/AppController.php';
 include_once __DIR__ . '/../app/Http/Controllers/Admin/AdminController.php';
+include_once __DIR__ . '/../app/Http/Controllers/Admin/ServiceController.php';
 include_once __DIR__ . '/../app/Http/Controllers/Auth/AuthController.php';
 
 return [
@@ -20,4 +21,11 @@ return [
     ['url' => '/mysite/admin/project/edit', 'name' => 'admin.edit', 'action' => [AdminController::class, 'edit'], 'method' => 'get', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
     ['url' => '/mysite/admin/project/update', 'name' => 'admin.update', 'action' => [AdminController::class, 'update'], 'method' => 'post', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
     ['url' => '/mysite/admin/project/delete', 'name' => 'admin.delete', 'action' => [AdminController::class, 'destroy'], 'method' => 'get', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
+
+    // Admin Service Area.
+    ['url' => '/mysite/admin/service', 'name' => 'admin.service.index', 'action' => [ServiceController::class, 'index'], 'method' => 'get', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
+    ['url' => '/mysite/admin/service/store', 'name' => 'admin.service.store', 'action' => [ServiceController::class, 'store'], 'method' => 'post', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
+    ['url' => '/mysite/admin/service/edit', 'name' => 'admin.service.edit', 'action' => [ServiceController::class, 'edit'], 'method' => 'get', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
+    ['url' => '/mysite/admin/service/update', 'name' => 'admin.service.update', 'action' => [ServiceController::class, 'update'], 'method' => 'post', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
+    ['url' => '/mysite/admin/service/delete', 'name' => 'admin.service.delete', 'action' => [ServiceController::class, 'destroy'], 'method' => 'get', 'middleware' => [IsAuthenticated::class, HasValidSession::class]],
 ];
