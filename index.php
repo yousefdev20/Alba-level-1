@@ -1,6 +1,7 @@
 <?php
 
 $routes = include_once __DIR__ . '/routes/web.php';
+include_once __DIR__ . '/system/Core/Exceptions/NonFoundPage.php';
 
 foreach ($routes as $route) {
     if (
@@ -27,5 +28,4 @@ foreach ($routes as $route) {
         }
     }
 }
-http_response_code(404);
-die(json_encode(['error' => '4O4 Not Found.']));
+throw new NonFoundPage();

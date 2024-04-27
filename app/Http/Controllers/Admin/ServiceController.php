@@ -1,6 +1,7 @@
 <?php
 
 include_once __DIR__ . '/../../../../system/Core/Controller/BaseController.php';
+include_once __DIR__ . '/../../Requests/StoreServiceRequest.php';
 
 class ServiceController extends BaseController
 {
@@ -11,8 +12,10 @@ class ServiceController extends BaseController
         view('admin/service/index', with: compact(['services']));
     }
 
-    public function store(Request $request): void
+    public function store(StoreServiceRequest $request): void
     {
+
+        die($request->validated());
         $filename = str_replace(' ', '', basename($_FILES['image']['name']));
         $dir = "public/assets/projects/images";
         $tempFile = "$dir/$filename";
