@@ -12,15 +12,17 @@ foreach ($routes as $route) {
         if (strtolower($_SERVER['REQUEST_METHOD']) === strtolower($route['method'])) {
             $instance = new $route['action'][0]();
 
+            $reflection = new ReflectionMethod(($instance::class), $route['action'][1]);
+
+            $requestInstance = (string)$reflection->getParameters()[0]->getType();
+
             if ($route['middleware'] ?? false) {
                 foreach ($route['middleware'] as $middleware) {
                     $middlewareInstance = new $middleware();
                     $middlewareInstance->handel();
                 }
-                $instance->{$route['action'][1]}(new Request());
-            } else {
-                $instance->{$route['action'][1]}(new Request());
             }
+            $instance->{$route['action'][1]}(new $requestInstance);
             exit();
         } else {
             http_response_code(405);
