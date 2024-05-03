@@ -15,7 +15,6 @@ class ServiceController extends BaseController
     public function store(StoreServiceRequest $request): void
     {
 
-        die($request->validated());
         $filename = str_replace(' ', '', basename($_FILES['image']['name']));
         $dir = "public/assets/projects/images";
         $tempFile = "$dir/$filename";

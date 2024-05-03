@@ -29,13 +29,14 @@ abstract class FormValidation extends Request
         return [];
     }
 
-    private function handel()
+    private function handel(): array
     {
         foreach ($this->rules() as $key => $value)
         {
             foreach ($value as $rule)
             {
-                die($rule);
+                $instance = new $rule;
+                $instance($this->only([$key]));
             }
         }
 

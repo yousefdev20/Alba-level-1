@@ -14,7 +14,11 @@ foreach ($routes as $route) {
 
             $reflection = new ReflectionMethod(($instance::class), $route['action'][1]);
 
-            $requestInstance = (string)$reflection->getParameters()[0]->getType();
+            $requestInstance = (string)$reflection->getParameters()[0]?->getType();
+
+            if (! $requestInstance) {
+                $requestInstance = Request::class;
+            }
 
             if ($route['middleware'] ?? false) {
                 foreach ($route['middleware'] as $middleware) {
